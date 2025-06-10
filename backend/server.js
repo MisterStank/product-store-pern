@@ -17,7 +17,11 @@ const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cors());
-app.use(helmet());
+app.use(
+  helmet(
+    { contentSecurityPolicy: false } // Disable CSP for simplicity, adjust as needed
+  )
+);
 app.use(morgan("dev"));
 
 app.use(async (req, res, next) => {
